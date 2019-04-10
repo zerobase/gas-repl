@@ -1,7 +1,7 @@
 {
   "name": "gas-repl",
   "description": "Human-backed Web server (Wizard of Oz method)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Hide Ishi <hidetoi@gmail.com>",
   "bin": {
     "gas-repl": "bin/gas-repl"
