@@ -4,4 +4,3 @@ node_modules/
 .clasprc.json
 dist/
 *.tmp-browserify-*
-gas/index.js

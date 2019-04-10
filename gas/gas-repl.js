@@ -1,4 +1,4 @@
-global.repl = function (replUrl) {
+function repl(replUrl) {
   var value = "Start REPL";
   var exit = "EXITREPL";
 

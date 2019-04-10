@@ -10,14 +10,8 @@
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
     "@google/clasp": "^2.1.0",
     "@types/express": "^4.16.1",
-    "babel-cli": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
-    "babelify": "^10.0.0",
-    "browserify": "^16.2.3",
-    "gasify": "^1.0.0",
     "typescript": "^3.4.3"
   },
   "scripts": {
