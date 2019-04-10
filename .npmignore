@@ -1,5 +1,4 @@
-node_modules/
 .clasp.json
 .claspcreds.json
 .clasprc.json
-dist/
+src/**/*.ts

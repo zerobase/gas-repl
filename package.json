@@ -1,8 +1,19 @@
 {
   "name": "wozserver",
-  "version": "1.0.0",
   "description": "Human-backed Web server (Wizard of Oz method)",
-  "main": "server.js",
+  "version": "1.0.0",
+  "author": "Hide Ishi <hidetoi@gmail.com>",
+  "keywords": [
+    "gas",
+    "google apps script",
+    "repl"
+  ],
+  "bin": {
+    "wozserver": "bin/wozserver"
+  },
+  "bugs": {
+    "url": "https://github.com/zerobase/wozserver/issues"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
@@ -14,19 +25,19 @@
     "@types/express": "^4.16.1",
     "typescript": "^3.4.3"
   },
-  "scripts": {
-    "server": "node dist/server.js",
-    "build-server": "tsc",
-    "build-gas": "browserify -t babelify -p gasify src/gas.js -o gas/index.js"
-  },
+  "files": [
+    "bin",
+    "dist",
+    "gas"
+  ],
+  "homepage": "https://github.com/zerobase/wozserver#readme",
+  "license": "Unlicense",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zerobase/wozserver.git"
   },
-  "author": "Hide Ishi <hidetoi@gmail.com>",
-  "license": "Unlicense",
-  "bugs": {
-    "url": "https://github.com/zerobase/wozserver/issues"
-  },
-  "homepage": "https://github.com/zerobase/wozserver#readme"
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js"
+  }
 }
