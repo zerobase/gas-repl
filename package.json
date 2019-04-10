@@ -4,7 +4,8 @@
   "description": "Human-backed Web server (Wizard of Oz method)",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "localtunnel": "^1.9.1"
   },
   "devDependencies": {
     "@google/clasp": "^2.1.0",
