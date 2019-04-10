@@ -1,4 +1,4 @@
-# wozserver - Human-backed Web server (Wizard of Oz method)
+# gas-repl - Human-backed Web server (Wizard of Oz method)
 
 A web server that exposes itself to the world with [localtunnel](https://localtunnel.github.io/www/). The HTTP response is written in hand. Yeah, you type the response on demand, just in time.
 
@@ -7,7 +7,7 @@ Meant to be used for remote REPL (read–eval–print loop) backdoor for debuggi
 ## Installation
 
 ```
-npm install --save-dev wozserver
+npm install --save-dev gas-repl
 ```
 
 ## Prerequisite
@@ -45,6 +45,6 @@ function repl(replUrl) {
 }
 ```
 
-Run `wozserver` and enjoy REPL.
+Run `gas-repl` and enjoy REPL.
 
 If it does not work, modifying the first line to `global.repl = function (replUrl) {` may work. Note that this has to be a global function.

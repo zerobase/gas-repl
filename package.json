@@ -1,18 +1,13 @@
 {
-  "name": "wozserver",
+  "name": "gas-repl",
   "description": "Human-backed Web server (Wizard of Oz method)",
   "version": "1.0.0",
   "author": "Hide Ishi <hidetoi@gmail.com>",
-  "keywords": [
-    "gas",
-    "google apps script",
-    "repl"
-  ],
   "bin": {
-    "wozserver": "bin/wozserver"
+    "gas-repl": "bin/gas-repl"
   },
   "bugs": {
-    "url": "https://github.com/zerobase/wozserver/issues"
+    "url": "https://github.com/zerobase/gas-repl/issues"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -30,11 +25,16 @@
     "dist",
     "gas"
   ],
-  "homepage": "https://github.com/zerobase/wozserver#readme",
+  "homepage": "https://github.com/zerobase/gas-repl#readme",
+  "keywords": [
+    "gas",
+    "google apps script",
+    "repl"
+  ],
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zerobase/wozserver.git"
+    "url": "git+https://github.com/zerobase/gas-repl.git"
   },
   "scripts": {
     "build": "tsc",

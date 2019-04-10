@@ -24,7 +24,7 @@ app.post(
 app.listen(
   port,
   () => {
-    console.log(`wozserver listening on port ${port}!`);
+    console.log(`gas-repl listening on port ${port}!`);
   }
 );
 
