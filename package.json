@@ -1,0 +1,21 @@
+{
+  "name": "wozserver",
+  "version": "1.0.0",
+  "description": "Human-backed Web server (Wizard of Oz method)",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@google/clasp": "^2.1.0"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zerobase/wozserver.git"
+  },
+  "author": "Hide Ishi <hidetoi@gmail.com>",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/zerobase/wozserver/issues"
+  },
+  "homepage": "https://github.com/zerobase/wozserver#readme"
+}
