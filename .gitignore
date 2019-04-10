@@ -1,2 +1,4 @@
 node_modules/
 gas/
+.clasp.json
+appsscript.json
