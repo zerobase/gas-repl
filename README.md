@@ -1,8 +1,6 @@
 # gas-repl - Remote REPL for Google Apps Script
 
-A web server that exposes itself to the world with [localtunnel](https://localtunnel.github.io/www/). The HTTP response is written in hand. Yeah, you type the response on demand, just in time.
-
-Meant to be used for remote REPL (read–eval–print loop) backdoor for debugging Google Apps Script projects.
+Remote REPL (read–eval–print loop) for debugging Google Apps Script projects.
 
 ## Installation
 
@@ -12,11 +10,11 @@ npm install --save-dev gas-repl
 
 ## Prerequisite
 
-Check the instruction of `[clasp run](https://github.com/google/clasp/blob/master/docs/run.md)`.
+Your GAS project should be set up for [`clasp run`](https://github.com/google/clasp/blob/master/docs/run.md).
 
 ## Usage
 
-Put this global function into your Google Apps Script project:
+Put the global function below into your Google Apps Script project, then `gas-repl`:
 
 ```
 function repl(replUrl) {
@@ -44,5 +42,3 @@ function repl(replUrl) {
   };
 }
 ```
-
-Run `gas-repl` and enjoy REPL.
