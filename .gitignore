@@ -3,3 +3,5 @@ node_modules/
 .claspcreds.json
 .clasprc.json
 dist/
+*.tmp-browserify-*
+gas/index.js
