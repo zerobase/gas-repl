@@ -1,21 +1,18 @@
-function repl(replUrl) {
+function repl(replURL) {
   var value = "Start REPL";
-  var exit = "EXITREPL";
+  var object = { name: 'hide', id: 'zerobase' };
+  // add code here to prepare some objects
 
-  while(value != exit) {
+  while(true) {
+    var response = UrlFetchApp.fetch(replURL,
+                     {
+                       'method': 'post',
+                       'contentType': 'application/json',
+                       'muteHttpExceptions': true,
+                       'payload': JSON.stringify({"result": value})
+                     });
     try {
-      console.log(value);
-
-      var fetchOptions = {
-        'method': 'post',
-        'contentType': 'application/json',
-        'muteHttpExceptions': true,
-        'payload': JSON.stringify({"result": value})
-      };
-
-      var response = UrlFetchApp.fetch(replUrl, fetchOptions);
-      var expression = response.getContentText();
-      value = eval(expression);
+      value = eval(response.getContentText());
     }
     catch (e) {
       value = e
