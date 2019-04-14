@@ -1,7 +1,7 @@
 {
   "name": "gas-repl",
   "description": "Remote REPL for Google Apps Script",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Hide Ishi <hidetoi@gmail.com>",
   "bin": {
     "gas-repl": "bin/gas-repl"
