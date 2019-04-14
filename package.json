@@ -1,6 +1,6 @@
 {
   "name": "gas-repl",
-  "description": "Human-backed Web server (Wizard of Oz method)",
+  "description": "Remote REPL for Google Apps Script",
   "version": "1.1.0",
   "author": "Hide Ishi <hidetoi@gmail.com>",
   "bin": {
