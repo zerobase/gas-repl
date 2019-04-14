@@ -1,20 +1,27 @@
 import * as localtunnel from 'localtunnel';
+import {EventEmitter} from 'events';
 import {GAS} from './gas';
 
 export class Tunnel {
-  start(port: number) {
-    const tunnel = localtunnel(port, function(err, tunnel) {
-      if (err) {
-        throw err;
-      }
-      console.log(`localtunnel ${tunnel.url} is open.`);
+  start(port: number): Promise<EventEmitter> {
+    return new Promise((resolve, reject) => {
+      const tunnel = localtunnel(port, (err, tunnel) => {
+        if (err) {
+          reject(err);
+        }
+        console.log(`localtunnel ${tunnel.url} is open.`);
+        resolve(tunnel);
+      });
 
-      const gas = new GAS();
-      gas.start(tunnel.url);
-    });
+      tunnel.on('close', () => {
+        console.log('localtunnel ${this.url} is closed.');
+        throw 'localtunnel is closed';
+      });
 
-    tunnel.on('close', function() {
-      console.log('localtunnel ${this.url} is closed.');
+      tunnel.on('error', (error) => {
+        console.log(`localtunnel error: ${error}`);
+        throw error;
+      })
     });
   }
 }

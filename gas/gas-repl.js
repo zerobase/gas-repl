@@ -1,14 +1,16 @@
-function GAS_REPL(replURL) {
+function GAS_REPL(tunnelURL) {
   var value = "Start REPL";
-  var object = { name: 'hide', id: 'zerobase' };
-  // add code here to prepare some objects
 
-  while(true) {
-    var response = UrlFetchApp.fetch(replURL,
+  // prepare some objects
+  var me = { name: 'hide', id: 'zerobase' };
+  var url = ScriptApp.getService().getUrl();
+
+  do {
+    var response = UrlFetchApp.fetch(
+                     tunnelURL,
                      {
                        'method': 'post',
                        'contentType': 'application/json',
-                       //'muteHttpExceptions': true,
                        'payload': JSON.stringify({"result": value})
                      });
     try {
@@ -17,5 +19,5 @@ function GAS_REPL(replURL) {
     catch (e) {
       value = e
     }
-  };
+  } while (response.getResponseCode() == 200);
 };
