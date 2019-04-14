@@ -3,3 +3,4 @@ node_modules/
 .claspcreds.json
 .clasprc.json
 dist/
+gas-repl-*.tgz
