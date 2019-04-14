@@ -19,7 +19,7 @@ export class Server {
     express.listen(
       port,
       () => {
-        console.log(`gas-repl listening on port ${port}!`);
+        console.log(`gas-repl is listening on local port ${port}.`);
       }
     );
   }

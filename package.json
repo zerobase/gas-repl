@@ -1,7 +1,7 @@
 {
   "name": "gas-repl",
   "description": "Human-backed Web server (Wizard of Oz method)",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Hide Ishi <hidetoi@gmail.com>",
   "bin": {
     "gas-repl": "bin/gas-repl"
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "commander": "^2.20.0",
     "express": "^4.16.4",
     "localtunnel": "^1.9.1",
     "readline-sync": "^1.4.9"
