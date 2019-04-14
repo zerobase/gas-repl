@@ -4,3 +4,4 @@ node_modules/
 .clasprc.json
 dist/
 gas-repl-*.tgz
+.gas-repl.history

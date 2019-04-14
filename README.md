@@ -1,6 +1,6 @@
 # gas-repl - Remote REPL for Google Apps Script (npm)
 
-Remote REPL (read–eval–print loop) for debugging Google Apps Script projects.
+Interacting with remote objects gets your programming easier.
 
 ## Installation
 
@@ -14,16 +14,19 @@ Your GAS project should be set up for [`clasp run`](https://github.com/google/cl
 
 ## Usage
 
-Put the global function below into your Google Apps Script project, then `gas-repl`:
+Put this global function to your project:
 
 ```
-function GAS_REPL(replURL) {
+function GAS_REPL(tunnelURL) {
   var value = "Start REPL";
-  var object = { name: 'hide', id: 'zerobase' };
-  // add code here to prepare some objects
 
-  while(true) {
-    var response = UrlFetchApp.fetch(replURL,
+  // prepare some objects
+  var me = { name: 'hide', id: 'zerobase' };
+  var url = ScriptApp.getService().getUrl();
+
+  do {
+    var response = UrlFetchApp.fetch(
+                     tunnelURL,
                      {
                        'method': 'post',
                        'contentType': 'application/json',
@@ -35,6 +38,8 @@ function GAS_REPL(replURL) {
     catch (e) {
       value = e
     }
-  };
+  } while (response.getResponseCode() == 200);
 };
 ```
+
+Then execute `gas-repl` and interact with remote objects.

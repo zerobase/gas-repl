@@ -1,26 +1,36 @@
 import * as Express from 'express';
 import * as bodyParser from 'body-parser';
-import * as readlineSync from 'readline-sync';
+import {EventEmitter} from 'events';
 
 export class Server {
-  start(port: number): void {
-    const express = Express();
-    express.use(bodyParser.urlencoded({ extended: true }))
-    express.use(bodyParser.json())
+  start(port: number): Promise<EventEmitter> {
+    return new Promise((resolve, reject) => {
+      const event = new EventEmitter;
+      const express = Express();
+      express.use(bodyParser.urlencoded({ extended: true }));
+      express.use(bodyParser.json());
+      express.use((err, req, res, next) => {
+        console.log(`Express error: ${err}`);
+        res.sendStatus(500);
+        res.send(err);
+        throw err;
+      });
 
-    express.post(
-      '/',
-      (req: Express.Request, res: Express.Response) => {
-        console.log(req.body.result);
-        return res.send(readlineSync.question("\n> "));
-      }
-    );
+      express.post(
+        '/',
+        async (req: Express.Request, res: Express.Response) => {
+          event.once('input', (input) => res.send(input.trim()));
+          event.emit('result', req.body.result);
+        }
+      );
 
-    express.listen(
-      port,
-      () => {
-        console.log(`gas-repl is listening on local port ${port}.`);
-      }
-    );
+      express.listen(
+        port,
+        () => {
+          console.log(`Express is listening on local port ${port}.`);
+          resolve(event);
+        }
+      );
+    });
   }
 }
