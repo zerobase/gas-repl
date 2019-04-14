@@ -2,11 +2,11 @@ import {Server} from './server';
 import {Tunnel} from './tunnel';
 
 export class App {
-  start(options) {
+  start(port) {
     const server = new Server();
-    server.start(options.port);
+    server.start(port);
 
     const tunnel = new Tunnel();
-    tunnel.start(options.port);
+    tunnel.start(port);
   }
 }

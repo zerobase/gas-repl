@@ -8,7 +8,7 @@ function repl(replURL) {
                      {
                        'method': 'post',
                        'contentType': 'application/json',
-                       'muteHttpExceptions': true,
+                       //'muteHttpExceptions': true,
                        'payload': JSON.stringify({"result": value})
                      });
     try {
