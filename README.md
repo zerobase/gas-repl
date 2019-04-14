@@ -1,4 +1,4 @@
-# gas-repl - Remote REPL for Google Apps Script
+# gas-repl - Remote REPL for Google Apps Script (npm)
 
 Remote REPL (read–eval–print loop) for debugging Google Apps Script projects.
 
