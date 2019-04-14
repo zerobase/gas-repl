@@ -1,4 +1,4 @@
-function repl(replURL) {
+function GAS_REPL(replURL) {
   var value = "Start REPL";
   var object = { name: 'hide', id: 'zerobase' };
   // add code here to prepare some objects
