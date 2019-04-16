@@ -1,6 +1,5 @@
 import * as localtunnel from 'localtunnel';
 import {EventEmitter} from 'events';
-import {GAS} from './gas';
 
 export class Tunnel {
   start(port: number): Promise<EventEmitter> {
