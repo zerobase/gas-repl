@@ -19,6 +19,9 @@ function GAS_REPL(tunnelURL) {
     }
     catch (e) {
       console.log(e);
+      if (/DNS error/.test(e) || /404/.test(e)) {
+        throw 'REPL Connection Error';
+      }
       value = e
     }
   } while (value != exit);
