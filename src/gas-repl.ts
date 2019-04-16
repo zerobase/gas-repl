@@ -1,7 +1,7 @@
 import * as repl from 'repl';
 import {EventEmitter} from 'events';
 
-export class REPL {
+export class GasRepl {
   start(event: EventEmitter): Promise<EventEmitter> {
     return new Promise((resolve, reject) => {
       //event.once('result', (result) => { /* ignore the first */});

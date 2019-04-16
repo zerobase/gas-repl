@@ -1,20 +1,20 @@
 import {Server} from './server';
 import {Tunnel} from './tunnel';
 import {Clasp} from './clasp';
-import {REPL} from './repl';
+import {GasRepl} from './gas-repl';
 import * as getPort from 'get-port';
 
 export class App {
   private server;
   private tunnel;
   private clasp;
-  private repl;
+  private gasRepl;
 
   constructor() {
     this.server = new Server;
     this.tunnel = new Tunnel;
-    this.clasp    = new Clasp;
-    this.repl   = new REPL;
+    this.clasp = new Clasp;
+    this.gasRepl = new GasRepl;
   }
 
   start() {
@@ -24,7 +24,7 @@ export class App {
       .then(event => {
         this.tunnel.start(port)
         .then(tunnel => {
-          this.repl.start(event)
+          this.gasRepl.start(event)
           .then(repl => this.clasp.start(tunnel.url))
         });
       });
