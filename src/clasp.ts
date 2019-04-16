@@ -1,7 +1,7 @@
 import {spawn} from 'child_process';
 import {EventEmitter} from 'events';
 
-export class GAS {
+export class Clasp {
   start(tunnelURL: string): Promise<EventEmitter> {
     return new Promise((resolve, reject) => {
       const clasp = spawn('clasp', ['run', 'GAS_REPL', '-p', `["${tunnelURL}"]`]);
