@@ -18,28 +18,31 @@ Put this global function to your project:
 
 ```
 function GAS_REPL(tunnelURL) {
-  var value = "Start REPL";
+  var value = "START GAS-REPL";
+  var exit = "exit";
 
   // prepare some objects
   var me = { name: 'hide', id: 'zerobase' };
   var url = ScriptApp.getService().getUrl();
 
   do {
-    var response = UrlFetchApp.fetch(
-                     tunnelURL,
-                     {
-                       'method': 'post',
-                       'contentType': 'application/json',
-                       'payload': JSON.stringify({"result": value})
-                     });
     try {
+      var response = UrlFetchApp.fetch(
+                       tunnelURL,
+                       {
+                         'method': 'post',
+                         'contentType': 'application/json',
+                         'payload': JSON.stringify({"result": value})
+                       });
+      var now = new Date();
       value = eval(response.getContentText());
     }
     catch (e) {
+      console.log(e);
       value = e
     }
-  } while (response.getResponseCode() == 200);
-};
+  } while (value != exit);
+}
 ```
 
 Then execute `gas-repl` and interact with remote objects.
