@@ -23,4 +23,4 @@ function GAS_REPL(tunnelURL) {
       value = e
     }
   } while (value != exit);
-};
+}
