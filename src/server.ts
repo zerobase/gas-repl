@@ -19,8 +19,11 @@ export class Server {
       express.post(
         '/',
         async (req: Express.Request, res: Express.Response) => {
+          let result = req.body.result;
           event.once('input', (input) => res.send(input.trim()));
-          event.emit('result', req.body.result);
+          if (result != 'START GAS-REPL') {
+            event.emit('result', result);
+          }
         }
       );
 
