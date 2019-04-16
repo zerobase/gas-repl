@@ -3,8 +3,7 @@ function GAS_REPL(tunnelURL) {
   var exit = "exit";
 
   // prepare some objects
-  var me = { name: 'hide', id: 'zerobase' };
-  var url = ScriptApp.getService().getUrl();
+  var me = Session.getActiveUser().getUsername();
 
   do {
     try {
