@@ -1,10 +1,15 @@
 function GAS_REPL(tunnelURL) {
+  var hello = "Hello from Apps Script ID: " + ScriptApp.getScriptId();
   if (tunnelURL === undefined) {
-    return "Hello from Apps Script ID: " + ScriptApp.getScriptId();
+    return hello;
   }
-
+  function inspect(object) {
+    return Object.keys(object).map(
+      (function(k){
+        return typeof object[k] + " [" + k + "] = " + object[k];
+      }));
+  }
   var value = "START GAS-REPL";
-  var exit = "exit";
 
   // prepare some objects
   var me = Session.getActiveUser().getUsername();
@@ -29,5 +34,5 @@ function GAS_REPL(tunnelURL) {
       }
       value = e
     }
-  } while (value != exit);
+  } while (true);
 }
