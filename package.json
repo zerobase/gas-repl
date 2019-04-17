@@ -38,6 +38,7 @@
   },
   "scripts": {
     "build": "mkdir -p dist && find dist -mindepth 1 -delete && tsc",
+    "push": "clasp push",
     "start": "node dist/main.js"
   }
 }
