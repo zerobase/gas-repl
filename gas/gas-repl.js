@@ -1,13 +1,14 @@
-function hello() {
-  return "Hello from Apps Script ID: " + ScriptApp.getScriptId();
-}
-
 function GAS_REPL(tunnelURL) {
+  if (tunnelURL === undefined) {
+    return "Hello from Apps Script ID: " + ScriptApp.getScriptId();
+  }
+
   var value = "START GAS-REPL";
   var exit = "exit";
 
   // prepare some objects
   var me = Session.getActiveUser().getUsername();
+  //var app = initApp();
 
   do {
     try {

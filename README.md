@@ -14,9 +14,10 @@ Your GAS project should be set up for [`clasp run`](https://github.com/google/cl
 
 1. Find Project ID from <https://console.cloud.google.com/home/dashboard> and Script ID from <https://script.google.com/home/my>, then paste it into `.clasp.json`.
 2. Open <https://console.developers.google.com/apis/credentials>, create an OAuth Client ID (Other), then download as `.claspcreds.json`.
-3. `clasp login --creds .claspcreds.json` creates `.claspcreds.json`.
-4. `clasp run hello` will return `Hello from Apps Script ID: ******`.
-5. Now you can `npm run build`, `npm run push`, then `npm run start`.
+3. `clasp login --creds .claspcreds.json`.
+4. `clasp push`
+5. `clasp run GAS_REPL will return `Hello from Apps Script ID: ******`.
+6. Now you can use `gas-repl`.
 
 ## Usage
 
@@ -24,11 +25,16 @@ Put this global function to your project:
 
 ```
 function GAS_REPL(tunnelURL) {
+  if (tunnelURL === undefined) {
+    return "Hello from Apps Script ID: " + ScriptApp.getScriptId();
+  }
+
   var value = "START GAS-REPL";
   var exit = "exit";
 
   // prepare some objects
   var me = Session.getActiveUser().getUsername();
+  //var app = initApp();
 
   do {
     try {
