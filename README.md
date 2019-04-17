@@ -10,7 +10,13 @@ npm install --save-dev gas-repl
 
 ## Prerequisite
 
-Your GAS project should be set up for [`clasp run`](https://github.com/google/clasp/blob/master/docs/run.md).
+Your GAS project should be set up for [`clasp run`](https://github.com/google/clasp/blob/master/docs/run.md). Follow the instruction below:
+
+1. Find Project ID from <https://console.cloud.google.com/home/dashboard> and Script ID from <https://script.google.com/home/my>, then paste it into `.clasp.json`.
+2. Open <https://console.developers.google.com/apis/credentials>, create an OAuth Client ID (Other), then download as `.claspcreds.json`.
+3. `clasp login --creds .claspcreds.json` creates `.claspcreds.json`.
+4. `clasp run hello` will return `Hello from Apps Script ID: ******`.
+5. Now you can `npm run build`, `npm run push`, then `npm run start`.
 
 ## Usage
 
