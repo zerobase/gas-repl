@@ -5,7 +5,7 @@ function GAS_REPL(tunnelURL) {
     return hello;
   }
   function inspect(object) {
-    return Object.keys(object).map(
+    return Object.keys(object).sort().map(
       (function(k){
         return typeof object[k] + " [" + k + "] = " + object[k];
       }));
