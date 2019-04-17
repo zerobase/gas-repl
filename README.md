@@ -22,8 +22,7 @@ function GAS_REPL(tunnelURL) {
   var exit = "exit";
 
   // prepare some objects
-  var me = { name: 'hide', id: 'zerobase' };
-  var url = ScriptApp.getService().getUrl();
+  var me = Session.getActiveUser().getUsername();
 
   do {
     try {
@@ -39,6 +38,9 @@ function GAS_REPL(tunnelURL) {
     }
     catch (e) {
       console.log(e);
+      if (/DNS error/.test(e) || /404/.test(e)) {
+        throw 'REPL Connection Error';
+      }
       value = e
     }
   } while (value != exit);
