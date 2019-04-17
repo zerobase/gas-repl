@@ -2,6 +2,8 @@
 
 Interacting with remote objects gets your programming easier.
 
+[![Image from Gyazo](https://i.gyazo.com/2958460c431c85ccaeb51a24f08240e2.gif)](https://gyazo.com/2958460c431c85ccaeb51a24f08240e2)
+
 ## Installation
 
 ```
