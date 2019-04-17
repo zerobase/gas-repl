@@ -1,3 +1,4 @@
+// Put the following global function to your project.
 function GAS_REPL(tunnelURL) {
   var hello = "Hello from Apps Script ID: " + ScriptApp.getScriptId();
   if (tunnelURL === undefined) {
