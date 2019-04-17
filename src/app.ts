@@ -12,26 +12,32 @@ export class App {
 
   constructor() {
     this.server = new Server;
-    this.tunnel = new Tunnel;
     this.clasp = new Clasp;
-    this.gasRepl = new GasRepl;
+    this.tunnel = new Tunnel(this.clasp);
+    this.gasRepl = new GasRepl(this.clasp);
   }
 
   start() {
-    getPort()
-    .then(port => {
-      this.server.start(port)
-      .then(event => {
-        this.tunnel.start(port)
-        .then(tunnel => {
-          this.gasRepl.start(event)
-          .then(repl => this.clasp.start(tunnel.url))
+    try {
+      getPort()
+      .then(port => {
+        this.server.start(port)
+        .then(event => {
+          this.tunnel.start(port)
+          .then(tunnel => {
+            this.gasRepl.start(event)
+            .then(repl => this.clasp.start(tunnel.url))
+          });
         });
-      });
-    })
-    .catch(err => {
+      })
+    }
+    catch (err) {
+      if (/REPL Exit/.test(err)) {
+        console.log('kill clasp 2');
+        this.clasp.kill();
+      }
       console.log(err);
-      process.exit(1);
-    });
+      throw err;
+    }
   }
 }
