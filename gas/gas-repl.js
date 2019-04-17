@@ -1,3 +1,7 @@
+function hello() {
+  return "Hello from Apps Script ID: " + ScriptApp.getScriptId();
+}
+
 function GAS_REPL(tunnelURL) {
   var value = "START GAS-REPL";
   var exit = "exit";
