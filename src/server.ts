@@ -3,9 +3,14 @@ import * as bodyParser from 'body-parser';
 import {EventEmitter} from 'events';
 
 export class Server {
+  private event: EventEmitter;
+
+  constructor(event: EventEmitter) {
+    this.event = event;
+  }
+
   start(port: number): Promise<EventEmitter> {
     return new Promise((resolve, reject) => {
-      const event = new EventEmitter;
       const express = Express();
       express.use(bodyParser.urlencoded({ extended: true }));
       express.use(bodyParser.json());
@@ -20,9 +25,9 @@ export class Server {
         '/',
         async (req: Express.Request, res: Express.Response) => {
           let result = req.body.result;
-          event.once('input', (input) => res.send(input.trim()));
+          this.event.once('input', (input) => res.send(input.trim()));
           if (result != 'START GAS-REPL') {
-            event.emit('result', result);
+            this.event.emit('result', result);
           }
         }
       );
@@ -31,7 +36,7 @@ export class Server {
         port,
         () => {
           console.log(`Express is listening on local port ${port}.`);
-          resolve(event);
+          resolve(express);
         }
       );
     });

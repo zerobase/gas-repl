@@ -3,6 +3,11 @@ import {EventEmitter} from 'events';
 
 export class Clasp {
   private process;
+  private event: EventEmitter;
+
+  constructor(event: EventEmitter) {
+    this.event = event;
+  }
 
   start(tunnelURL: string): Promise<EventEmitter> {
     return new Promise((resolve, reject) => {
@@ -17,13 +22,11 @@ export class Clasp {
       });
 
       this.process.on('close', (code) => {
-        console.log(`clasp exited with code ${code}`);
-        throw 'clasp exited'
+        this.event.emit('exit', `clasp exited with code ${code}.`);
       });
 
       this.process.on('error', (error) => {
-        console.log(`clasp error: ${error}`);
-        throw error;
+        this.event.emit('exit', `clasp error: ${error}.`);
       });
 
       resolve(this.process);
