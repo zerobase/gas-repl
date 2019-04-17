@@ -46,3 +46,9 @@ function GAS_REPL(tunnelURL) {
 ```
 
 Then execute `gas-repl` and interact with remote objects.
+
+## Troubleshooting
+
+### `Could not read API credentials. Are you logged in globally?`
+
+Run `clasp login`.
