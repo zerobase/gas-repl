@@ -12,7 +12,6 @@ export class GasRepl {
 
   start(): Promise<EventEmitter> {
     return new Promise((resolve, reject) => {
-      //event.once('result', (result) => { /* ignore the first */});
       const replServer = repl.start({
         prompt: '> ',
         eval: (cmd, context, filename, callback) => {

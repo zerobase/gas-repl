@@ -22,18 +22,13 @@ export class App {
 
   start() {
     getPort()
-    .then(port => {
-      this.server.start(port)
-      .then(express => {
-        //console.log(`Express is listening on local port ${port}.`);
-        this.tunnel.start(port)
-        .then(tunnelUrl => {
-          //console.log(`tunnel ${tunnelUrl} is open.`);
-          this.gasRepl.start()
-          .then(repl => this.clasp.start(tunnelUrl))
-        });
-      });
-    });
+      .then(port => {
+        this.server.start(port);
+        return this.tunnel.start(port);
+      })
+      .then(tunnelUrl => this.clasp.start(tunnelUrl))
+      .then(() => this.gasRepl.start());
+    console.log('Press Enter, then try `now` or whatever you like.');
     this.event.on('exit', (msg) => {
       console.log(msg);
       this.clasp.kill();
