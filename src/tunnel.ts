@@ -1,4 +1,4 @@
-import * as localtunnel from 'localtunnel';
+import * as ngrok from 'ngrok';
 import {EventEmitter} from 'events';
 
 export class Tunnel {
@@ -7,40 +7,30 @@ export class Tunnel {
   private tunnel;
   private opened;
 
-  constructor(event: EventEmitter, clasp) {
+  constructor(event: EventEmitter) {
     this.event = event;
-    this.clasp = clasp;
+    this.tunnel = ngrok;
     this.opened = false;
   }
 
-  start(port: number): Promise<EventEmitter> {
+  start(port: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.tunnel = localtunnel(port, (err, tunnel) => {
-        if (err) {
-          reject(err);
-        }
-        setTimeout(() => {
-          console.log(`localtunnel ${this.tunnel.url} is open.`);
-          this.opened = true;
-          resolve(this.tunnel), 3000
-        }); // wait
-      });
-
-      this.tunnel.on('close', () => {
-        if (this.opened) {
-          this.opened = false;
-          this.event.emit('exit', `localtunnel ${this.tunnel.url} is closed.`);
-        }
-      });
-
-      this.tunnel.on('error', (error) => {
-        this.event.emit('exit', `localtunnel error: ${error}.`);
-      })
+      try {
+        var url = this.tunnel.connect({ addr: port, region: 'ap' });
+        this.opened = true;
+        resolve(url);
+      }
+      catch (e) {
+        this.opened = false;
+        this.event.emit('exit', `ngrok error: ${e}.`);
+        reject(e);
+      }
     });
   }
 
   close(): void {
-    this.tunnel.close();
-    this.opened = false;
+    this.tunnel.disconnect()
+    .then(() => this.opened = false)
+    .then(() => this.tunnel.kill());
   }
 }

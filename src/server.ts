@@ -32,13 +32,7 @@ export class Server {
         }
       );
 
-      express.listen(
-        port,
-        () => {
-          console.log(`Express is listening on local port ${port}.`);
-          resolve(express);
-        }
-      );
+      express.listen(port, () => resolve(express));
     });
   }
 }

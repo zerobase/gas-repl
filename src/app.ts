@@ -16,7 +16,7 @@ export class App {
     this.event = new EventEmitter;
     this.server = new Server(this.event);
     this.clasp = new Clasp(this.event);
-    this.tunnel = new Tunnel(this.event, this.clasp);
+    this.tunnel = new Tunnel(this.event);
     this.gasRepl = new GasRepl(this.event, this.clasp);
   }
 
@@ -25,10 +25,12 @@ export class App {
     .then(port => {
       this.server.start(port)
       .then(express => {
+        //console.log(`Express is listening on local port ${port}.`);
         this.tunnel.start(port)
-        .then(tunnel => {
+        .then(tunnelUrl => {
+          //console.log(`tunnel ${tunnelUrl} is open.`);
           this.gasRepl.start()
-          .then(repl => this.clasp.start(tunnel.url))
+          .then(repl => this.clasp.start(tunnelUrl))
         });
       });
     });

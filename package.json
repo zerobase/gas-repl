@@ -1,7 +1,7 @@
 {
   "name": "gas-repl",
   "description": "Remote REPL for Google Apps Script",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "author": "Hide Ishi <hidetoi@gmail.com>",
   "bin": {
     "gas-repl": "bin/gas-repl"
@@ -13,7 +13,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "get-port": "^5.0.0",
-    "localtunnel": "^1.9.1"
+    "ngrok": "^3.1.1"
   },
   "devDependencies": {
     "@google/clasp": "^2.1.0",
